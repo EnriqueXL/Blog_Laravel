@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Ruta(la url que quieras que aparezca) | Direccion completa  |Metodo  
+Route::get('/saludo1', 'App\Http\Controllers\SaludoController@saludo');
+
+Auth::routes();
+//       Ruta que llama al controlador 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
