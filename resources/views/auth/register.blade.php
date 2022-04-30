@@ -7,6 +7,19 @@
             <div class="card">
                 <div class="card-header">{{ __('registro-formulario.Register') }}</div>
 
+                   {{-- Mostrar los errores en listado en rojo--}}
+                   @if($errors->any())
+                   <div class="alert alert-danger">
+                       <ul>
+                           @foreach($errors->all() as $error)
+
+                               <li>{{ $error }}</li>
+
+                           @endforeach
+                       </ul>
+                   </div>    
+               @endif
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -17,11 +30,16 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
+                                {{-- Errores customizados (Se encuentrar en el RegisterController)
+                                    Se muestran debajo del label --}}
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                       @foreach ($errors->get('name') as $error)
+                                           <li>{{ $error }}</li>
+                                       @endforeach
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
 
@@ -31,13 +49,18 @@
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
+                                {{--    Errores que estan debajo del label --}}
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
+
+                      
+                        
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('registro-formulario.Password') }}</label>

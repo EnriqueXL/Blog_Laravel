@@ -50,11 +50,41 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        /* Custom */
+        $mensajes = array(
+            'name.required' => 'Campo nombre requerido',
+            'name.max' => 'Campo nombre demsasiado largo',
+
+            'email.required' => 'Campo email requerido',
+            'email.max' => 'Campo email demasiado largo',
+            'email.unique' => 'El email ya existe en nuestra base de datos',
+            'email.email' => 'El email debe ser un email válido',
+
+            'alias.required' => 'Campo alias requerido',
+            'alias.min' => 'Campo alias demasiado corto',
+            'alias.max' => 'Campo alias demasiado largo',
+            'alias.unique' => 'El alias ya existe en nuestra base de datos',
+
+            'web.max' => 'Campo web demasiado largo',
+
+            'password.required' => 'Campo password requerido',
+            'password.confirmed' => 'Los Campos password no coinciden',
+            'password.regex' => 'La contraseña debe tener un minimo de 8 caracter y contener al menos una mayuscula, una minuscula y un número o caracter especial.'
+        );
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:190'],
+            'email' => ['required', 'string', 'email', 'max:190', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+            /* campos extras */
+            'alias' => 'required|string|min:3|max:20|unique:users',                  
+            'web' => 'max:20', 
+
+            /* Expresión regular */
+            'password' => array('required','string','confirmed','regex:/(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/') 
+        ],$mensajes);
     }
 
     /**
