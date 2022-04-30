@@ -38,6 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        /* Solo pueden entrar los invitados */
         $this->middleware('guest');
     }
 

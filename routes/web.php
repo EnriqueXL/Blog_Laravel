@@ -21,5 +21,6 @@ Route::get('/', function () {
 Route::get('/saludo1', 'App\Http\Controllers\SaludoController@saludo');
 
 Auth::routes();
+
 //       Ruta que llama al controlador 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
