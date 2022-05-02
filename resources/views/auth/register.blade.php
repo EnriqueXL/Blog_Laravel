@@ -9,16 +9,16 @@
 
                    {{-- Mostrar los errores en listado en rojo--}}
                    @if($errors->any())
-                   <div class="alert alert-danger">
-                       <ul>
-                           @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
 
-                               <li>{{ $error }}</li>
+                                    <li>{{ $error }}</li>
 
-                           @endforeach
-                       </ul>
-                   </div>    
-               @endif
+                                @endforeach
+                            </ul>
+                        </div>    
+                    @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -59,7 +59,31 @@
                             </div>
                         </div>
 
-                      
+                        <div class="row mb-3">
+                            <label for="alias" class="col-md-4 col-form-label text-md-end">Alias</label>
+
+                            <div class="col-md-6">
+                                <input id="alias" type="text"  class="form-control{{ $errors->has('alias') ? ' is-invalid' : '' }}"name="alias" value="{{ old('alias') }}" placeholder="Min 3, Max 20 carácteres" required autofocus">
+
+                                @if ($errors->has('alias'))
+                                 <span class="invalid-feedback" role="alert">
+                                     @foreach ($errors->get('alias') as $error)
+                                        <li>{{ $error }}</li>
+                                     @endforeach
+                                    </span>
+                                 @endif
+
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="web" class="col-md-4 col-form-label text-md-end">Web</label>
+
+                            <div class="col-md-6">
+                                <input id="web" type="web" class="form-control @error('web') is-invalid @enderror" name="web" value="{{ old('web') }}" autofocus>
+
+                            </div>
+                        </div>
                         
 
                         <div class="row mb-3">
