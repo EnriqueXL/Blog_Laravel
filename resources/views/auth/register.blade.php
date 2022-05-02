@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div style="margin-top:150px; margin-bottom:500px;" class="row justify-content-center">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('registro-formulario.Register') }}</div>
 
@@ -20,7 +21,7 @@
                         </div>    
                     @endif
 
-                <div class="card-body">
+                <div class="card-body" style="padding: 20px">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

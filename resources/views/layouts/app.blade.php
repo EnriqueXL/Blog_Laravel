@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
     <meta name="description" content="">
     <title>@yield('title','Blog acerca de laravel')</title>
 
-    
+
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -32,46 +33,115 @@
     <link rel="stylesheet" href="{{ asset('assets/theme/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/wowslider-init/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/mobirise/css/mbr-additional.css') }}" type="text/css">
-    <link rel="stylesheet" href = "{{ asset('assets/wowslider-init/twist/style.css') }}"></link>
-  
+    <link rel="stylesheet" href="{{ asset('assets/wowslider-init/twist/style.css') }}">
+    </link>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
+
 <body>
     <section class="menu1" id="menu-0" data-rv-view="0">
         <nav class="navbar navbar-dropdown navbar-fixed-top">
             <div class="container-fluid">
-    
+
                 <div class="mbr-table">
                     <div class="mbr-table-cell">
-    
+
                         <div class="navbar-brand">
-                            <a href="https://mobirise.com" class="navbar-logo"><img src="assets/images/img-laravel-128x128.png" alt="Mobirise"></a>
+                            <a href="https://mobirise.com" class="navbar-logo"><img
+                                    src="{{ asset('assets/images/img-laravel-128x128.png') }}" alt="Mobirise"></a>
                             <a class="navbar-caption text-white" href="https://mobirise.com">BLOGLARAVEL</a>
                         </div>
-    
+
                     </div>
                     <div class="mbr-table-cell">
-    
-                        <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+
+                        <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse"
+                            data-target="#exCollapsingNavbar">
                             <span class="hamburger-icon"></span>
                         </button>
-    
-                        <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><a class="nav-link link" href="https://mobirise.com/">INICIO</a></li><li class="nav-item dropdown"><a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu" href="https://mobirise.com/" aria-expanded="false">TEMAS PRINCIPALES</a><div class="dropdown-menu"><a class="dropdown-item" href="https://mobirise.com/">Mobile friendly</a><a class="dropdown-item" href="https://mobirise.com/">Based on Bootstrap</a><div class="dropdown"><a class="dropdown-item dropdown-toggle" data-toggle="dropdown-submenu" href="https://mobirise.com/">Trendy blocks</a><div class="dropdown-menu dropdown-submenu"><a class="dropdown-item" href="https://mobirise.com/">Image/content slider</a><a class="dropdown-item" href="https://mobirise.com/">Contact forms</a><a class="dropdown-item" href="https://mobirise.com/">Image gallery</a><a class="dropdown-item" href="https://mobirise.com/">Mobile menu</a><a class="dropdown-item" href="https://mobirise.com/">Google maps</a><a class="dropdown-item" href="https://mobirise.com/">Social buttons</a><a class="dropdown-item" href="https://mobirise.com/">Google fonts</a><a class="dropdown-item" href="https://mobirise.com/">Video background</a></div></div><a class="dropdown-item" href="https://mobirise.com/">Host anywhere</a></div></li></ul>
-                        <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+
+                        <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm"
+                            id="exCollapsingNavbar">
+                            <li class="nav-item">
+                                <a class="nav-link link" href="https://mobirise.com/">INICIO</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu"
+                                    href="https://mobirise.com/" aria-expanded="false">TEMAS PRINCIPALES</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="https://mobirise.com/">Mobile friendly</a><a
+                                        class="dropdown-item" href="https://mobirise.com/">Based on Bootstrap</a>
+                                    <div class="dropdown"><a class="dropdown-item dropdown-toggle"
+                                            data-toggle="dropdown-submenu" href="https://mobirise.com/">Trendy
+                                            blocks</a>
+                                        <div class="dropdown-menu dropdown-submenu"><a class="dropdown-item"
+                                                href="https://mobirise.com/">Image/content slider</a>
+                                            <a class="dropdown-item" href="https://mobirise.com/">Contact forms</a><a
+                                                class="dropdown-item" href="https://mobirise.com/">Image gallery</a>
+                                            <a class="dropdown-item" href="https://mobirise.com/">Mobile menu</a><a
+                                                class="dropdown-item" href="https://mobirise.com/">Google maps</a>
+                                            <a class="dropdown-item" href="https://mobirise.com/">Social buttons</a><a
+                                                class="dropdown-item" href="https://mobirise.com/">Google fonts</a>
+                                            <a class="dropdown-item" href="https://mobirise.com/">Video background</a>
+                                        </div>
+                                    </div><a class="dropdown-item" href="https://mobirise.com/">Host anywhere</a>
+                                </div>
+                            </li>
+                            {{-- Sistema de autenticacio+on --}}
+                            <!-- Authentication Links -->
+                            @guest
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                @endif
+
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link link"
+                                            href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    </li>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                </li>
+                            @endguest
+                        </ul>
+                        <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse"
+                            data-target="#exCollapsingNavbar">
                             <span class="close-icon"></span>
                         </button>
-    
+
                     </div>
                 </div>
             </div>
         </nav>
     </section>
 
+    {{-- LLamamos el contenido --}}
     @yield('content')
 
-    <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer2-5" data-rv-view="71" style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
+    <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer2-5" data-rv-view="71"
+        style="background-color: rgb(50, 50, 50); padding-top: 1.75rem; padding-bottom: 1.75rem;">
 
         <div class="container">
             <p class="text-xs-center lead">Copyright (c) 2016 <a href="http://mobirise.com">Mobirise</a>.</p>
@@ -96,8 +166,10 @@
     <script src="{{ asset('assets/wowslider-init/script.js') }}"></script>
 
     <input name="animation" type="hidden">
-        <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-   <input name="cookieData" type="hidden" data-cookie-text="Utilizamos cookies de terceros.">
-   
+    <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i
+                class="mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
+    <input name="cookieData" type="hidden" data-cookie-text="Utilizamos cookies de terceros.">
+
 </body>
+
 </html>
