@@ -107,6 +107,7 @@
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
+                                    {{-- Se elimino el bs para que funcione: Anteriormente. data-bs-toggle="dropdown" --}}
                                     <a id="navbarDropdown" class="nav-link link dropdown-toggle" href="#" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
