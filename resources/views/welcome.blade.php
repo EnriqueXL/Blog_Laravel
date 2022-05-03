@@ -337,4 +337,7 @@ y para llamarla en otra vista la puedo llamar con
     </div>
 </section>
 
+{{-- incluye el modal de la carpeta includes --}}
+@include('includes.login-modal')
+
 @endsection
