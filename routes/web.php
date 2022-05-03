@@ -12,13 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+/*         url | Ruta del controlador                  | Metodo  | Opcional (darle un nombre para ser llamado desde route)  */
+Route::get('/', 'App\Http\Controllers\WelcomeController@welcome')->name('welcome');
 
 //Ruta(la url que quieras que aparezca) | Direccion completa  |Metodo  
-Route::get('/saludo1', 'App\Http\Controllers\SaludoController@saludo');
+/* Route::get('/saludo1', 'App\Http\Controllers\SaludoController@saludo'); */
 
 Auth::routes();
 

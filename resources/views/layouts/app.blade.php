@@ -66,7 +66,10 @@
                         <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm"
                             id="exCollapsingNavbar">
                             <li class="nav-item">
-                                <a class="nav-link link" href="https://mobirise.com/">INICIO</a>
+                                {{-- Llamar ruta por url
+                                     <a class="nav-link link" href="{{ url('/') }}">INICIO</a>
+                                 --}}
+                                <a class="nav-link link" href="{{ route('welcome') }}">INICIO</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link link dropdown-toggle" data-toggle="dropdown-submenu"
@@ -95,7 +98,7 @@
                             @guest
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <a class="nav-link link" href="#" data-toggle="modal" data-target="#loginModal">{{ __('Login') }}</a>
                                     </li>
                                 @endif
 
